@@ -26,6 +26,7 @@ class CarCoreData {
         
         model.category = carModel.category?.segment
         model.carName = carModel.carName
+        model.carModel = carModel.carModel
         model.engine = carModel.engine
         model.price = carModel.price
         model.image = carModel.image

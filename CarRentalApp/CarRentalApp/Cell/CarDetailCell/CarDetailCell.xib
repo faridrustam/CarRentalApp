@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CarDetailCell" customModule="CarRentalApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="360"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="360"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0i-ZV-5O6">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="359"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gnr-Cx-olC">
+                                <rect key="frame" x="0.0" y="122" width="370" height="224"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="3LN-Mv-Xx9"/>
+                                    <constraint firstAttribute="width" constant="370" id="7DP-Vt-g8W"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gnr-Cx-olC" firstAttribute="centerX" secondItem="X0i-ZV-5O6" secondAttribute="centerX" id="0YI-Uq-2nn"/>
+                            <constraint firstAttribute="bottom" secondItem="Gnr-Cx-olC" secondAttribute="bottom" constant="13" id="FbH-nW-3mc"/>
+                            <constraint firstAttribute="trailing" secondItem="Gnr-Cx-olC" secondAttribute="trailing" id="WxG-mc-h09"/>
+                            <constraint firstItem="Gnr-Cx-olC" firstAttribute="leading" secondItem="X0i-ZV-5O6" secondAttribute="leading" id="f7U-vn-NKF"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toyota" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gU-gE-dve">
+                        <rect key="frame" x="34" y="30" width="206" height="37"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mb0-7x-r49">
+                        <rect key="frame" x="34" y="99.333333333333329" width="150" height="26.333333333333329"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-ji-bbe">
+                        <rect key="frame" x="34" y="75" width="150" height="21.333333333333329"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4-Cyl 1.5 Liter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-2N-1ow">
+                        <rect key="frame" x="181.66666666666663" y="98.333333333333314" width="151.33333333333337" height="20.666666666666686"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$350" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ln-Qy-V4D">
+                        <rect key="frame" x="254" y="34" width="96" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                        <color key="textColor" systemColor="linkColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/month" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocv-1v-Cvp">
+                        <rect key="frame" x="241.33333333333337" y="70.333333333333314" width="91.666666666669244" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="5gU-gE-dve" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="04v-az-69S"/>
+                <constraint firstItem="mb0-7x-r49" firstAttribute="width" secondItem="pqe-ji-bbe" secondAttribute="width" id="TFy-Gw-SFZ"/>
+                <constraint firstItem="5gU-gE-dve" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.556757" id="XeU-qr-AgG"/>
+                <constraint firstItem="mb0-7x-r49" firstAttribute="leading" secondItem="pqe-ji-bbe" secondAttribute="leading" id="axm-E7-Xo8"/>
+                <constraint firstItem="mb0-7x-r49" firstAttribute="height" secondItem="pqe-ji-bbe" secondAttribute="height" multiplier="1.22727" id="cS8-xQ-ozm"/>
+                <constraint firstItem="mb0-7x-r49" firstAttribute="trailing" secondItem="pqe-ji-bbe" secondAttribute="trailing" id="cqc-o3-zOI"/>
+                <constraint firstAttribute="bottom" secondItem="X0i-ZV-5O6" secondAttribute="bottom" constant="1" id="fh2-rQ-X7z"/>
+                <constraint firstItem="pqe-ji-bbe" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.405405" id="hd2-3n-6hH"/>
+                <constraint firstItem="X0i-ZV-5O6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="heV-oU-e5F"/>
+                <constraint firstItem="mb0-7x-r49" firstAttribute="top" secondItem="pqe-ji-bbe" secondAttribute="bottom" constant="3" id="hnr-kx-OxK"/>
+                <constraint firstItem="pqe-ji-bbe" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="34" id="nLF-it-hnG"/>
+                <constraint firstItem="X0i-ZV-5O6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ngZ-BY-dGn"/>
+                <constraint firstItem="pqe-ji-bbe" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.0594595" id="pNG-gj-hzu"/>
+                <constraint firstItem="5gU-gE-dve" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="34" id="w1D-fL-1He"/>
+                <constraint firstItem="pqe-ji-bbe" firstAttribute="top" secondItem="5gU-gE-dve" secondAttribute="bottom" constant="8" symbolic="YES" id="yfe-3k-HII"/>
+            </constraints>
+            <size key="customSize" width="217" height="202"/>
+            <connections>
+                <outlet property="background" destination="X0i-ZV-5O6" id="94D-92-n9I"/>
+                <outlet property="carImage" destination="Gnr-Cx-olC" id="4hO-x3-WED"/>
+                <outlet property="carNameLabel" destination="5gU-gE-dve" id="sNv-GK-qVO"/>
+                <outlet property="engineDetailLabel" destination="AgD-2N-1ow" id="EmR-R8-4Ds"/>
+                <outlet property="modelLabel" destination="pqe-ji-bbe" id="dnj-BO-2Ah"/>
+                <outlet property="priceLabel" destination="9Ln-Qy-V4D" id="0P9-fl-KAb"/>
+            </connections>
+            <point key="canvasLocation" x="-167.93893129770993" y="-16.901408450704228"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="standard" width="350" height="200"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

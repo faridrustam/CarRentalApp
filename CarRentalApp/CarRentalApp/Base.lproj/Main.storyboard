@@ -100,18 +100,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kd8-qx-m8Y">
-                                <rect key="frame" x="0.0" y="167.66666666666663" width="393" height="594"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jUD-jq-yYs">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kd8-qx-m8Y">
+                                <rect key="frame" x="0.0" y="154.66666666666663" width="393" height="594"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="jUD-jq-yYs">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="50" maxX="10" maxY="50"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aPD-GG-dos">
-                                        <rect key="frame" x="0.0" y="50" width="128" height="128"/>
+                                        <rect key="frame" x="10" y="50" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nAx-B6-bgs">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -119,10 +119,6 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="jCB-7j-PUU">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
                             </collectionView>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J4a-2e-Cut">
                                 <rect key="frame" x="0.0" y="762" width="393" height="49"/>
@@ -146,7 +142,7 @@
                             <constraint firstItem="wVA-dK-Ws7" firstAttribute="trailing" secondItem="kd8-qx-m8Y" secondAttribute="trailing" id="U7R-bc-QXC"/>
                             <constraint firstItem="kd8-qx-m8Y" firstAttribute="leading" secondItem="wVA-dK-Ws7" secondAttribute="leading" id="XPW-3U-I8j"/>
                             <constraint firstItem="4I9-iK-CjZ" firstAttribute="centerX" secondItem="wVA-dK-Ws7" secondAttribute="centerX" id="Y9o-Du-yLH"/>
-                            <constraint firstItem="kd8-qx-m8Y" firstAttribute="top" secondItem="4I9-iK-CjZ" secondAttribute="bottom" constant="33" id="iYJ-pr-5UQ"/>
+                            <constraint firstItem="kd8-qx-m8Y" firstAttribute="top" secondItem="4I9-iK-CjZ" secondAttribute="bottom" constant="20" id="iYJ-pr-5UQ"/>
                             <constraint firstItem="4I9-iK-CjZ" firstAttribute="top" secondItem="wVA-dK-Ws7" secondAttribute="top" constant="16" id="nqR-ru-nkI"/>
                         </constraints>
                     </view>
@@ -166,11 +162,8 @@
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <image name="signin" width="750" height="1334"/>
         <image name="steeringwheel" catalog="system" width="128" height="123"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

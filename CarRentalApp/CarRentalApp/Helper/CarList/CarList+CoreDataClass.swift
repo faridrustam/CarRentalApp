@@ -2,7 +2,7 @@
 //  CarList+CoreDataClass.swift
 //  CarRentalApp
 //
-//  Created by Farid Rustamov on 22.12.24.
+//  Created by Farid Rustamov on 24.12.24.
 //
 //
 

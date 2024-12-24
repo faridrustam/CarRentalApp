@@ -11,36 +11,36 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="CategoryView" customModule="CarRentalApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="298"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="j45-EK-Rkc">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="clD-Yn-vMn">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vp8-wq-Fol">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="298"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aE1-Vj-YDa">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="j45-EK-Rkc" secondAttribute="trailing" id="9h9-EN-VjA"/>
-                <constraint firstItem="j45-EK-Rkc" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="ScS-Gv-6Dq"/>
-                <constraint firstAttribute="bottom" secondItem="j45-EK-Rkc" secondAttribute="bottom" id="TXj-Bj-nRC"/>
-                <constraint firstItem="j45-EK-Rkc" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="rnk-wu-o70"/>
+                <constraint firstItem="vp8-wq-Fol" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="6qp-Sb-hfv"/>
+                <constraint firstItem="vp8-wq-Fol" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="D9a-10-nhI"/>
+                <constraint firstAttribute="bottom" secondItem="vp8-wq-Fol" secondAttribute="bottom" id="DDz-ia-GGP"/>
+                <constraint firstItem="vp8-wq-Fol" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="tCc-Pe-94L"/>
             </constraints>
             <connections>
-                <outlet property="headerCollectionView" destination="j45-EK-Rkc" id="U93-sx-j2j"/>
+                <outlet property="headerCollectionView" destination="vp8-wq-Fol" id="yjI-47-9b9"/>
             </connections>
-            <point key="canvasLocation" x="-46.564885496183201" y="50.70422535211268"/>
+            <point key="canvasLocation" x="-25.190839694656489" y="85.91549295774648"/>
         </collectionReusableView>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

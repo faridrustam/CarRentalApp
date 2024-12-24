@@ -24,7 +24,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Standard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCl-dC-RXh">
-                                <rect key="frame" x="8" y="89" width="92" height="14"/>
+                                <rect key="frame" x="8" y="86" width="92" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,7 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE3-u8-a1F">
                                 <rect key="frame" x="9" y="109" width="90" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="10"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -53,6 +53,7 @@
             <connections>
                 <outlet property="background" destination="gMO-r3-uEp" id="Cyd-73-Wyh"/>
                 <outlet property="carCountLabel" destination="uE3-u8-a1F" id="NdI-f3-0R5"/>
+                <outlet property="carImage" destination="06f-qF-111" id="Tc5-ON-9th"/>
                 <outlet property="segmentLabel" destination="VCl-dC-RXh" id="may-e8-Gq7"/>
             </connections>
             <point key="canvasLocation" x="90.839694656488547" y="28.52112676056338"/>

@@ -16,6 +16,7 @@ struct CategoryModel {
 struct CarModel {
     let category: CategoryModel?
     let carName: String?
+    let carModel: String?
     let engine: String?
     let price: String?
     let image: String?

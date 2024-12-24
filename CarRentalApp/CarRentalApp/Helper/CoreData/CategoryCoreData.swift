@@ -12,9 +12,20 @@ class CategoryCoreData {
     let context = AppDelegate().persistentContainer.viewContext
     var categoryItems = [CategoryList]()
     
-    func fetchData() {
+    func fetchData(completion: (() -> Void)? = nil) {
         do {
             try categoryItems = context.fetch(CategoryList.fetchRequest())
+            completion?()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteData(categoryModel: CategoryList) {
+        
+        fetchData()
+        do {
+            try context.save()
         } catch {
             print(error.localizedDescription)
         }

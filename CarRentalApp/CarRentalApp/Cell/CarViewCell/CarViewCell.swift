@@ -12,6 +12,7 @@ class CarViewCell: UICollectionViewCell {
     @IBOutlet private weak var background: UIView!
     @IBOutlet private weak var carCountLabel: UILabel!
     @IBOutlet private weak var segmentLabel: UILabel!
+    @IBOutlet weak var carImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,9 +27,10 @@ class CarViewCell: UICollectionViewCell {
         
     }
     
-    func callElement(carCount: Int, segment: String) {
-        carCountLabel.text = "\(carCount)"
+    func callElement(segment: String, carCount: String, image: String) {
+        carCountLabel.text = carCount
         segmentLabel.text = segment
+        carImage.image = UIImage(named: image)
     }
 
 }
