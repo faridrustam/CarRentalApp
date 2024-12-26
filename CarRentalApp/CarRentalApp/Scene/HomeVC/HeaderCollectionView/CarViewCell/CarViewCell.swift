@@ -14,6 +14,8 @@ class CarViewCell: UICollectionViewCell {
     @IBOutlet private weak var segmentLabel: UILabel!
     @IBOutlet weak var carImage: UIImageView!
     
+    var callUI: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureUI()
@@ -31,6 +33,12 @@ class CarViewCell: UICollectionViewCell {
         carCountLabel.text = carCount
         segmentLabel.text = segment
         carImage.image = UIImage(named: image)
+    }
+    
+    func changebackgroundColor(backgroundColor: UIColor, carCountColor: UIColor, segmentColor: UIColor) {
+        background.backgroundColor = backgroundColor
+        carCountLabel.textColor = carCountColor
+        segmentLabel.textColor = segmentColor
     }
 
 }

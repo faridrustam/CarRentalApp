@@ -34,7 +34,7 @@ class SignInController: UIViewController {
 
     @IBAction func loginButtonTapped(_ sender: Any) {
         if let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty {
-            userDefaultsManger.setLoggedIn(value: true, key: .login)
+            userDefaultsManger.setValue(value: true, key: .login)
             let controller = storyboard?.instantiateViewController(identifier: "\(HomeController.self)") as! HomeController
             
             navigationController?.show(controller, sender: nil)

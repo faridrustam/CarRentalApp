@@ -11,8 +11,13 @@ class CategoryView: UICollectionReusableView {
 
     @IBOutlet weak var headerCollectionView: UICollectionView!
     
-    let coreData = CategoryCoreData()
-    let categoryList = CarsData()
+    private var items = [CategoryList]()
+    
+    var categoryTapped: ((CategoryList) -> Void)?
+    
+   var carViewCellTapped: (() -> Void)?
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +25,6 @@ class CategoryView: UICollectionReusableView {
     }
     
     func configureUI() {
-        coreData.fetchData()
         headerCollectionView.delegate = self
         headerCollectionView.dataSource = self
         
@@ -36,21 +40,46 @@ class CategoryView: UICollectionReusableView {
         headerCollectionView.register(UINib(nibName: "CarViewCell", bundle: nil),
             forCellWithReuseIdentifier: "\(CarViewCell.self)")
     }
+    
+    func configure(data: [CategoryList]) {
+        items = data
+        headerCollectionView.reloadData()
+    }
+    
+    func changeUI() {
+        carViewCellTapped?()
+    }
 }
 
 extension CategoryView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Number of items in section: \(coreData.categoryItems.count)")
-        return coreData.categoryItems.count
+        items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CarViewCell.self)", for: indexPath) as! CarViewCell
-        let data = coreData.categoryItems[indexPath.item]
-        cell.callElement(segment: data.segment ?? "", carCount: data.carCount ?? "", image: data.image ?? "")
+        let data = items[indexPath.item]
+        cell.callElement(segment: data.segment ?? "",
+                         carCount: data.carCount ?? "",
+                         image: data.image ?? "")
+        
+        carViewCellTapped = {
+//            var selectedCategory: IndexPath?
+//            if  {
+            cell.changebackgroundColor(backgroundColor: .blue, carCountColor: .white, segmentColor: .white)
+//                } else {
+//                    cell.changebackgroundColor(backgroundColor: .white, carCountColor: .black, segmentColor: .black)
+//                }
+            }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCategory = items[indexPath.item]
+        categoryTapped?(selectedCategory)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        if userDefaultsManager.getLoggedIn(key: .login) {
+        if userDefaultsManager.getValue(key: .login) {
             getHomeController()
         } else {
             getSignInController()

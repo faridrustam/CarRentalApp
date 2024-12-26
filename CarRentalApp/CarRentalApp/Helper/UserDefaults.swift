@@ -10,13 +10,15 @@ import Foundation
 class UserDefaultsManager {
     enum Keys: String, CaseIterable {
         case login = "loggedIn"
+        case saved = "saved"
+        case carSaved = "carSaved"
     }
     
-    func setLoggedIn(value: Any, key: Keys) {
+    func setValue(value: Any, key: Keys) {
         UserDefaults.standard.setValue(value, forKey: key.rawValue)
     }
     
-    func getLoggedIn(key: Keys = .login) -> Bool {
+    func getValue(key: Keys = .login) -> Bool {
         UserDefaults.standard.bool(forKey: key.rawValue)
     }
 }

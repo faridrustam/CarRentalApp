@@ -11,21 +11,12 @@ class CategoryCoreData {
     
     let context = AppDelegate().persistentContainer.viewContext
     var categoryItems = [CategoryList]()
+    let userDefaultsManager = UserDefaultsManager()
     
     func fetchData(completion: (() -> Void)? = nil) {
         do {
             try categoryItems = context.fetch(CategoryList.fetchRequest())
             completion?()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func deleteData(categoryModel: CategoryList) {
-        
-        fetchData()
-        do {
-            try context.save()
         } catch {
             print(error.localizedDescription)
         }
@@ -40,7 +31,8 @@ class CategoryCoreData {
         
         do {
             try context.save()
-            fetchData()
+//            fetchData()
+            self.userDefaultsManager.setValue(value: true, key: .saved)
         } catch {
             print(error.localizedDescription)
         }

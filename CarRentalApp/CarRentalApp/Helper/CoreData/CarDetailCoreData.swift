@@ -7,15 +7,16 @@
 
 import Foundation
 
-class CarCoreData {
+class CarDetailCoreData {
     let context = AppDelegate().persistentContainer.viewContext
     var carItems = [CarList]()
+    let userDefaultsManager = UserDefaultsManager()
     var callUI: (() -> Void)?
     
-    func fetchData() {
+    func fetchData(completion: (() -> Void)?) {
         do {
             carItems = try context.fetch(CarList.fetchRequest())
-            callUI?()
+            completion?()
         } catch {
             print(error.localizedDescription)
         }
@@ -33,7 +34,8 @@ class CarCoreData {
         
         do {
             try context.save()
-            fetchData()
+//            fetchData()
+            userDefaultsManager.setValue(value: true, key: .carSaved)
         } catch {
             print(error.localizedDescription)
         }

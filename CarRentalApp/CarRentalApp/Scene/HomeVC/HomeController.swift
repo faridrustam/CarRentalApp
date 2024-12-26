@@ -8,16 +8,36 @@
 import UIKit
 
 class HomeController: UIViewController {
-    
-    let carsData = CarsData()
-    let carCoreData = CarCoreData()
-    
     @IBOutlet weak var topCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
+    
+    let carsData = CarsData()
+    let carCoreData = CarDetailCoreData()
+    let manager = CategoryCoreData()
+    
+    var categoryItems = [CategoryList]()
+    var carItems = [CarList]()
+    
+    var filteredCars: [CarList] = []
+    var searchedCars: [CarList] = []
+    
+    let userDefaultsManager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        getItems()
+    }
+    
+    @IBAction func searchFieldTyped(_ sender: Any) {
+        if let searchText = searchTextField.text {
+            if searchText.isEmpty {
+                searchedCars = carItems
+                topCollectionView.reloadData()
+            } else {
+                filterSearch()
+            }
+        }
     }
     
     func configureUI() {
@@ -25,14 +45,25 @@ class HomeController: UIViewController {
         topCollectionView.delegate = self
         topCollectionView.dataSource = self
         searchFieldUI()
-        carsData.loadData()
-        carsData.carData.fetchData()
-               
+        
         topCollectionView.register(UINib(nibName: "CarDetailCell", bundle: nil), forCellWithReuseIdentifier: "CarDetailCell")
-        topCollectionView.register(
-            UINib(nibName: "CategoryView", bundle: nil),
+        topCollectionView.register(UINib(nibName: "CategoryView", bundle: nil),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: "CategoryView")
+    }
+    
+    func getItems() {
+        if !userDefaultsManager.getValue(key: .saved) && !userDefaultsManager.getValue(key: .carSaved)  {
+            carsData.saveData()
+        }
+        manager.fetchData {
+            self.categoryItems = self.manager.categoryItems
+            self.topCollectionView.reloadData()
+        }
+        carCoreData.fetchData {
+            self.carItems = self.carCoreData.carItems
+            self.topCollectionView.reloadData()
+        }
     }
     
     func searchFieldUI() {
@@ -42,24 +73,52 @@ class HomeController: UIViewController {
         let searchIcon = UIImageView(image: UIImage(systemName: "magnifyingglass"))
         searchIcon.tintColor = .black
         let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: searchTextField.frame.height))
-        searchIcon.frame = CGRect(x: 0, y: 20, width: 20, height: 20)
+        searchIcon.frame = CGRect(x: -10, y: 20, width: 20, height: 20)
         rightView.addSubview(searchIcon)
         searchTextField.rightView = rightView
         searchTextField.rightViewMode = .always
     }
-
+    
+    func filterSearch() {
+        filteredCars = carItems.filter { $0.carName?.lowercased() == searchTextField.text?.lowercased() }
+        topCollectionView.reloadData()
+    }
+    
+    func filterCarsByCategory(category: CategoryList) {
+        filteredCars = carItems.filter { $0.category == category.segment }
+            topCollectionView.reloadData()
+        }
 }
 
 extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        carCoreData.carItems.count
+        if !filteredCars.isEmpty {
+            return filteredCars.count
+        } else {
+            return carCoreData.carItems.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CarDetailCell.self)", for: indexPath) as! CarDetailCell
-        let data = carCoreData.carItems[indexPath.item]
-        cell.callElement(carName: data.carName ?? "", model: data.carModel ?? "", engineDetail: data.engine ?? "", price: data.price ?? "", image: data.image ?? "")
+        if !filteredCars.isEmpty {
+            let data = filteredCars[indexPath.item]
+            
+            cell.callElement(carName: data.carName ?? "",
+                             model: data.carModel ?? "",
+                             engineDetail: data.engine ?? "",
+                             price: data.price ?? "",
+                             image: data.image ?? "")
+        } else {
+            let data = carCoreData.carItems[indexPath.item]
+            
+            cell.callElement(carName: data.carName ?? "",
+                             model: data.carModel ?? "",
+                             engineDetail: data.engine ?? "",
+                             price: data.price ?? "",
+                             image: data.image ?? "")
+        }
         
         return cell
     }
@@ -69,12 +128,17 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = topCollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoryView", for: indexPath) as! CategoryView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoryView", for: indexPath) as! CategoryView
+        header.configure(data: categoryItems)
+        header.categoryTapped = { [weak self] selectedCategory in
+            self?.filterCarsByCategory(category: selectedCategory)
+        }
+        header.changeUI()
         
         return header
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 150)
+        .init(width: collectionView.frame.width, height: 200)
     }
 }
