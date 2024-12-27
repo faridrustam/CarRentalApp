@@ -8,31 +8,21 @@
 import UIKit
 
 class HomeController: UIViewController {
-    @IBOutlet weak var topCollectionView: UICollectionView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet private weak var topCollectionView: UICollectionView!
+    @IBOutlet private weak var searchTextField: UITextField!
     
-    let carsData = CarsData()
-    let carCoreData = CarDetailCoreData()
-    let manager = CategoryCoreData()
-    
-    var categoryItems = [CategoryList]()
-    var carItems = [CarList]()
-    
-    var filteredCars: [CarList] = []
-    var searchedCars: [CarList] = []
-    
-    let userDefaultsManager = UserDefaultsManager()
+    let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        getItems()
+        viewModel.getItems()
     }
     
     @IBAction func searchFieldTyped(_ sender: Any) {
         if let searchText = searchTextField.text {
             if searchText.isEmpty {
-                searchedCars = carItems
+                viewModel.searchedCars = viewModel.carItems
                 topCollectionView.reloadData()
             } else {
                 filterSearch()
@@ -52,20 +42,6 @@ class HomeController: UIViewController {
             withReuseIdentifier: "CategoryView")
     }
     
-    func getItems() {
-        if !userDefaultsManager.getValue(key: .saved) && !userDefaultsManager.getValue(key: .carSaved)  {
-            carsData.saveData()
-        }
-        manager.fetchData {
-            self.categoryItems = self.manager.categoryItems
-            self.topCollectionView.reloadData()
-        }
-        carCoreData.fetchData {
-            self.carItems = self.carCoreData.carItems
-            self.topCollectionView.reloadData()
-        }
-    }
-    
     func searchFieldUI() {
         searchTextField.placeholder = "Search for a car"
         searchTextField.layer.cornerRadius = (searchTextField.layer.frame.height / 2)
@@ -80,12 +56,12 @@ class HomeController: UIViewController {
     }
     
     func filterSearch() {
-        filteredCars = carItems.filter { $0.carName?.lowercased() == searchTextField.text?.lowercased() }
+        viewModel.filteredCars = viewModel.carItems.filter { $0.carName?.lowercased() == searchTextField.text?.lowercased() }
         topCollectionView.reloadData()
     }
     
     func filterCarsByCategory(category: CategoryList) {
-        filteredCars = carItems.filter { $0.category == category.segment }
+        viewModel.filteredCars = viewModel.carItems.filter { $0.category == category.segment }
             topCollectionView.reloadData()
         }
 }
@@ -93,17 +69,17 @@ class HomeController: UIViewController {
 extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if !filteredCars.isEmpty {
-            return filteredCars.count
+        if !viewModel.filteredCars.isEmpty {
+            return viewModel.filteredCars.count
         } else {
-            return carCoreData.carItems.count
+            return viewModel.carCoreData.carItems.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CarDetailCell.self)", for: indexPath) as! CarDetailCell
-        if !filteredCars.isEmpty {
-            let data = filteredCars[indexPath.item]
+        if !viewModel.filteredCars.isEmpty {
+            let data = viewModel.filteredCars[indexPath.item]
             
             cell.callElement(carName: data.carName ?? "",
                              model: data.carModel ?? "",
@@ -111,7 +87,7 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
                              price: data.price ?? "",
                              image: data.image ?? "")
         } else {
-            let data = carCoreData.carItems[indexPath.item]
+            let data = viewModel.carCoreData.carItems[indexPath.item]
             
             cell.callElement(carName: data.carName ?? "",
                              model: data.carModel ?? "",
@@ -129,7 +105,7 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategoryView", for: indexPath) as! CategoryView
-        header.configure(data: categoryItems)
+        header.configure(data: viewModel.categoryItems)
         header.categoryTapped = { [weak self] selectedCategory in
             self?.filterCarsByCategory(category: selectedCategory)
         }
