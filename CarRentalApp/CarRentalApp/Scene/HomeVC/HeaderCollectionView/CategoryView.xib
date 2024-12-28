@@ -15,11 +15,11 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vp8-wq-Fol">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="393" id="5Gm-yI-hOO"/>
-                        <constraint firstAttribute="height" constant="150" id="dyv-AP-PpY"/>
+                        <constraint firstAttribute="height" constant="140" id="dyv-AP-PpY"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aE1-Vj-YDa">
                         <size key="itemSize" width="128" height="128"/>
@@ -43,7 +43,7 @@
                 <constraint firstItem="vp8-wq-Fol" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="Zoe-JY-wcB"/>
                 <constraint firstItem="wu5-9d-uvk" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="20" id="hYp-qJ-ROq"/>
                 <constraint firstItem="vp8-wq-Fol" firstAttribute="centerX" secondItem="VXr-Tz-HHm" secondAttribute="centerX" id="pQO-gu-OQY"/>
-                <constraint firstItem="wu5-9d-uvk" firstAttribute="top" secondItem="vp8-wq-Fol" secondAttribute="bottom" constant="20" id="rX0-si-Vx6"/>
+                <constraint firstItem="wu5-9d-uvk" firstAttribute="top" secondItem="vp8-wq-Fol" secondAttribute="bottom" constant="30" id="rX0-si-Vx6"/>
             </constraints>
             <connections>
                 <outlet property="headerCollectionView" destination="vp8-wq-Fol" id="yjI-47-9b9"/>

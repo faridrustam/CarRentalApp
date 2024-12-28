@@ -26,7 +26,6 @@ class CarViewCell: UICollectionViewCell {
         segmentLabel.textColor = .black
         carCountLabel.textColor = .lightGray
         background.layer.cornerRadius = background.frame.height / 6
-        
     }
     
     func callElement(segment: String, carCount: String, image: String) {
@@ -35,10 +34,10 @@ class CarViewCell: UICollectionViewCell {
         carImage.image = UIImage(named: image)
     }
     
-    func changebackgroundColor(backgroundColor: UIColor, carCountColor: UIColor, segmentColor: UIColor) {
-        background.backgroundColor = backgroundColor
-        carCountLabel.textColor = carCountColor
-        segmentLabel.textColor = segmentColor
+    func updateBackground(isSelected: Bool) {
+        background.backgroundColor = isSelected ? .blue : .white
+        carCountLabel.textColor = isSelected ? .white : .lightGray
+        segmentLabel.textColor = isSelected ? .white : .black
     }
 
 }

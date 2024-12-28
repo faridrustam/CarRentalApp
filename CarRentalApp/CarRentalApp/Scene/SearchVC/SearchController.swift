@@ -30,6 +30,8 @@ class SearchController: UIViewController {
         collection.delegate = self
         collection.dataSource = self
         
+        title = "Search"
+        
         backgroundSearch.layer.cornerRadius = backgroundSearch.frame.height / 2
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange), for: .editingChanged)
         searchFieldUI()

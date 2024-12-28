@@ -80,7 +80,6 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CarDetailCell.self)", for: indexPath) as! CarDetailCell
         if !viewModel.filteredCars.isEmpty {
             let data = viewModel.filteredCars[indexPath.item]
-            
             cell.callElement(carName: data.carName ?? "",
                              model: data.carModel ?? "",
                              engineDetail: data.engine ?? "",
@@ -88,7 +87,6 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
                              image: data.image ?? "")
         } else {
             let data = viewModel.carCoreData.carItems[indexPath.item]
-            
             cell.callElement(carName: data.carName ?? "",
                              model: data.carModel ?? "",
                              engineDetail: data.engine ?? "",
@@ -109,7 +107,6 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
         header.categoryTapped = { [weak self] selectedCategory in
             self?.filterCarsByCategory(category: selectedCategory)
         }
-        header.changeUI()
         
         return header
     }

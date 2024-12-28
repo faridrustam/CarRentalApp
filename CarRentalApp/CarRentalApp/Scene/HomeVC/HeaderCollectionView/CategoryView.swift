@@ -8,16 +8,12 @@
 import UIKit
 
 class CategoryView: UICollectionReusableView {
-
+    
     @IBOutlet weak var headerCollectionView: UICollectionView!
     
     private var items = [CategoryList]()
-    
     var categoryTapped: ((CategoryList) -> Void)?
-    
-   var carViewCellTapped: (() -> Void)?
-    
-    
+    private var selectedCell: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,18 +32,14 @@ class CategoryView: UICollectionReusableView {
         
         headerCollectionView.collectionViewLayout = layout
         headerCollectionView.showsHorizontalScrollIndicator = false
-
+        
         headerCollectionView.register(UINib(nibName: "CarViewCell", bundle: nil),
-            forCellWithReuseIdentifier: "\(CarViewCell.self)")
+                                      forCellWithReuseIdentifier: "\(CarViewCell.self)")
     }
     
     func configure(data: [CategoryList]) {
         items = data
         headerCollectionView.reloadData()
-    }
-    
-    func changeUI() {
-        carViewCellTapped?()
     }
 }
 
@@ -60,23 +52,23 @@ extension CategoryView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CarViewCell.self)", for: indexPath) as! CarViewCell
         let data = items[indexPath.item]
+        let isSelected = (indexPath == selectedCell)
+        cell.updateBackground(isSelected: isSelected)
         cell.callElement(segment: data.segment ?? "",
                          carCount: data.carCount ?? "",
                          image: data.image ?? "")
-        
-        carViewCellTapped = {
-//            var selectedCategory: IndexPath?
-//            if  {
-            cell.changebackgroundColor(backgroundColor: .blue, carCountColor: .white, segmentColor: .white)
-//                } else {
-//                    cell.changebackgroundColor(backgroundColor: .white, carCountColor: .black, segmentColor: .black)
-//                }
-            }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let previousCellIndex = selectedCell
+        selectedCell = indexPath
+        
+        if let previousCellIndex = previousCellIndex {
+            collectionView.reloadItems(at: [previousCellIndex])
+        }
+        collectionView.reloadItems(at: [indexPath])
         
         let selectedCategory = items[indexPath.item]
         categoryTapped?(selectedCategory)
